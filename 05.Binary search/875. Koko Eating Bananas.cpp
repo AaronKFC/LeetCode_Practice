@@ -28,6 +28,7 @@ public:
             long int hours = 0;
             for (int i = 0; i < n; i++) {
                 hours += ceil((double) piles[i] / k);
+                // hours += floor((double)piles[i] / k)+1;
             }
             if (hours <= h) {
                 result = min(result, k);
