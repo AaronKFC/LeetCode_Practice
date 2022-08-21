@@ -66,3 +66,46 @@ private:
 };
 
 
+
+// Solution3 (NeetCode) based on "Quickselect" (use the partition method of quick sort)
+class Solution {
+public:
+    int findKthLargest(vector<int>& nums, int k) {
+        int low=0;
+        int high=nums.size()-1;
+        int pivot_index = nums.size();
+        while (pivot_index != k-1) {
+            pivot_index = partition(nums, low, high);
+            if (pivot_index > k-1) {
+                high = pivot_index - 1;
+            }
+            if (pivot_index < k-1) {
+                low = pivot_index + 1;
+            }
+        }
+        // return nums[k-1];
+        return nums[pivot_index];
+    }
+private:
+    int partition(vector<int>& nums, int low, int high) {
+        int pivot = nums[low];
+        int l = low + 1;
+        int r = high;
+        
+        while (l<=r) {
+            if (nums[l]<pivot && pivot<nums[r]) {
+                swap(nums[l], nums[r]);
+                l++;
+                r--;
+            }
+            if (nums[l]>=pivot) {
+                l++;
+            }
+            if (nums[r]<=pivot) {
+                r--;
+            }
+        }
+        swap(nums[low], nums[r]);
+        return r;
+    }
+};
