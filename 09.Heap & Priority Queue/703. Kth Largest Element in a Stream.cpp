@@ -95,8 +95,6 @@ private:
         while (l<=r) {
             if (nums[l]<pivot && pivot<nums[r]) {
                 swap(nums[l], nums[r]);
-                l++;
-                r--;
             }
             if (nums[l]>=pivot) {
                 l++;
@@ -104,6 +102,19 @@ private:
             if (nums[r]<=pivot) {
                 r--;
             }
+
+            //如下寫法亦可
+            // if (arr[l]<pivot && pivot<arr[r]) {
+            //     swap(arr[l], arr[r]);
+            //     l++;
+            //     r--;
+            // }
+            // if (arr[l]>=pivot) {
+            //     l++;
+            // }
+            // if (arr[r]<=pivot) {
+            //     r--;
+            // }
         }
         swap(nums[low], nums[r]);
         return r;
